@@ -8,7 +8,10 @@
 ![img.png](img.png)
 
 ### Json Config:
+![img_1.png](img_1.png)
 
+### Database types
+![img_2.png](img_2.png)
 
 
 ##current packages:

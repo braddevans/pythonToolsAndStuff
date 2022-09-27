@@ -10,7 +10,19 @@ class ConfigManager:
         self.logger.debug("Config __init__")
 
         # todo: implement ssl database connections in future
-        self.config = {"first_run": True, "database": {"type": "mysql", "database": "", "pool_name": "test", "pool_size": 9, "host": "0.0.0.0", "port": 3306, "username": "", "password": ""}}
+        self.config = {
+            "first_run": True,
+            "database": {
+                "type": "mysql",
+                "database": "",
+                "pool_name": "test",
+                "pool_size": 9,
+                "host": "0.0.0.0",
+                "port": 3306,
+                "username": "",
+                "password": ""
+            }
+        }
 
         if self.checkExists(configFile):
             self.logger.debug(f"Exists [{configFile}]: " + str(self.checkExists(configFile)) + f", Path: {os.getcwd() + os.sep + configFile}")
