@@ -1,3 +1,6 @@
+from utils.Logging import Logging
+
+
 class DatabaseConnectionManager:
     def __init__(self, logger, config):
         self.logger = logger
@@ -14,7 +17,7 @@ class DatabaseConnectionManager:
 
         if type == "mysql":
             from database.types.MysqlDatabase import MysqlDatabase
-            self.database = MysqlDatabase(self.logger, self.configManager)
+            self.database = MysqlDatabase(Logging("Mysql"), self.configManager)
         elif type == "sqlite":
             pass
         else:

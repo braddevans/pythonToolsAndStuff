@@ -8,7 +8,7 @@ class MysqlDatabase:
         self.configManager = config
         self.config = self.configManager.getConfig()
 
-        self.logger.info(f"Class [mysql] __init__")
+        self.logger.info(f"Class [mysql] __init__ with pool size: {self.config['database']['pool_size']}")
 
         self.dbconfig = {
             "database": self.config['database']['database'],

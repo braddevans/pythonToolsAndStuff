@@ -1,3 +1,5 @@
+import time
+
 from utils.Logging import Logging
 from database.DatabaseConnectionManager import DatabaseConnectionManager
 from utils.configManager import ConfigManager
@@ -5,16 +7,19 @@ from utils.configManager import ConfigManager
 DEBUG = False
 
 if __name__ == '__main__':
-    logger = Logging()
-    config = ConfigManager(logger)
+    main_logger = Logging("Main")
+    config = ConfigManager(Logging("ConfigManager"))
 
     # test logging
     if DEBUG:
-        logger.info("test info")
-        logger.error("test error")
-        logger.debug("test debug")
-
+        main_logger.info("test info")
+        main_logger.error("test error")
+        main_logger.debug("test debug")
 
     # test database insert, select, update, delete
-    database = DatabaseConnectionManager(logger, config)
+    database = DatabaseConnectionManager(Logging("DatabaseManager"), config)
 
+    main_logger.info("while loop started")
+    while True:
+        time.sleep(0.005)
+        pass

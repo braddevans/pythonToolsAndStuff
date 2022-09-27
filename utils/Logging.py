@@ -20,16 +20,17 @@ colors = {
 
 
 class Logging:
-    def __init__(self):
-        self.debug("Logger initialised")
+    def __init__(self, prefix):
+        self.prefix = prefix
+        self.debug(f"Logger initialised")
 
     # Format: [YYYY-MM-DD HH:MM:SS UTC]
 
     def info(self, message):
-        print(f"{colors['blue']}[INFO]  [{timestamp()}]: {message} {colors['reset']}")
+        print(f"{colors['blue']}[INFO]  [{timestamp()}] [{self.prefix}]: {message} {colors['reset']}")
 
     def debug(self, message):
-        print(f"{colors['green']}[DEBUG] [{timestamp()}]: {message} {colors['reset']}")
+        print(f"{colors['green']}[DEBUG] [{timestamp()}] [{self.prefix}]: {message} {colors['reset']}")
 
     def error(self, message):
-        print(f"{colors['red']}[ERROR] [{timestamp()}]: {message} {colors['reset']}")
+        print(f"{colors['red']}[ERROR] [{timestamp()}] [{self.prefix}]: {message} {colors['reset']}")
