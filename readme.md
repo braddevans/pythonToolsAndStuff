@@ -5,13 +5,13 @@
 ## currently, implemented:
 
 ### Logger:
-![img.png](img.png)
+![img.png](readme_images/img.png)
 
 ### Json Config:
-![img_1.png](img_1.png)
+![img_1.png](readme_images/img_1.png)
 
 ### Database types
-![img_2.png](img_2.png)
+![img_2.png](readme_images/img_2.png)
 
 
 ##current packages:
