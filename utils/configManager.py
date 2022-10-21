@@ -13,14 +13,7 @@ class ConfigManager:
         self.config = {
             "first_run": True,
             "database": {
-                "type": "mysql",
-                "database": "",
-                "pool_name": "test",
-                "pool_size": 9,
-                "host": "0.0.0.0",
-                "port": 3306,
-                "username": "",
-                "password": ""
+                "type": "flatfile"
             }
         }
 

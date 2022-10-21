@@ -1,6 +1,5 @@
 from utils.Logging import Logging
 
-
 class DatabaseConnectionManager:
     def __init__(self, logger, config):
         self.logger = logger
@@ -14,12 +13,9 @@ class DatabaseConnectionManager:
         self.logger.info(f"Trying to Load Database Connection Type: {self.config['database']['type']}")
 
         type = str(self.config['database']['type']).lower()
-
-        if type == "mysql":
-            from database.types.MysqlDatabase import MysqlDatabase
-            self.database = MysqlDatabase(Logging("Mysql"), self.configManager)
-        elif type == "sqlite":
-            pass
+        if type == "flatfile":
+            from database.types.JsonDatabase import JsonDatabase
+            self.database = JsonDatabase(Logging("JsonDb"), self.configManager)
         else:
             self.logger.error('No implemented database type specified')
 
