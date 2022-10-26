@@ -6,9 +6,7 @@ databaseFile = "database.json"
 
 
 class JsonDatabase:
-    def __init__(self, logger, config):
-        self.logger = logger
-        self.configManager = config
+    def __init__(self):
         self.db = {
             "products": [],
             "orders": [],
@@ -16,20 +14,11 @@ class JsonDatabase:
         }
 
         if self.checkExists(databaseFile):
-            self.logger.debug(f"Exists [{databaseFile}]: " + str(self.checkExists(databaseFile)) + f", Path: {os.getcwd() + os.sep + databaseFile}")
             self.readFile()
         else:
             self.writeFile()
             self.readFile()
 
-        self.logger.info("Class [JsonFlatfile] __init__")
-
-        if self.configManager.getConfig()['first_run']:
-            self.init()
-            self.logger.error("This is the first run of the application please edit the config.json")
-            self.configManager.getConfig()['first_run'] = False
-            self.configManager.writeConfig(self.configManager.getConfig())
-            sys.exit()
 
     def write_path(self, path, value):
         # string split

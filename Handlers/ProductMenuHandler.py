@@ -1,25 +1,24 @@
 from tabulate import tabulate
 
 
-class ProductMenuHandler():
+class ProductMenuHandler:
     def __init__(self, dcm):
-        self.dcm = dcm
+        self.db = dcm
 
-        self.defaultlist = [['Return to Main Menu', 0],['PRINT products list', 1],['CREATE new product', 2],['UPDATE existing product', 3],['DELETE product', 4]]
+        self.defaultlist = [['Return to Main Menu', 0], ['PRINT products list', 1], ['CREATE new product', 2], ['UPDATE existing product', 3], ['DELETE product', 4]]
         self.prodictlist = []
         self.kvdict = {}
         print(tabulate(self.defaultlist, headers=['Menu Options', 'Option Number'], tablefmt="outline"))
 
-        # print(self.dcm.getDB())
-        for item in self.dcm.getDB()["products"]:
-            index = self.dcm.getDB()["products"].index(item)
+        # print(self.dcm)
+        for item in self.db.getDB()["products"]:
+            index = self.db.getDB()["products"].index(item)
             index += 1
             self.kvdict[index] = item
             # print(f"Adding: k:{index}, v:{item}")
             self.prodictlist.append([item, index])
 
         self.open_menu(int(input("please input your product option: ")))
-
 
     def open_menu(self, _input):
         if _input == 4:
@@ -65,30 +64,30 @@ class ProductMenuHandler():
             return 0
 
     def add_to_list(self, item):
-        self.dcm.getDB()["products"].append(item)
-        self.dcm.writeFile()
+        self.db.getDB()["products"].append(item)
+        self.db.writeFile()
         self.recreate_list()
         pass
 
     def update_list(self, index, item):
-        self.dcm.getDB()["products"][index-1] = item
-        self.dcm.writeFile()
+        self.db.getDB()["products"][index - 1] = item
+        self.db.writeFile()
         self.recreate_list()
         pass
 
     def remove_from_list(self, index):
-        print(f"index: {index-1}, removedItem: {self.dcm.getDB()['products'][index-1]}")
-        self.dcm.getDB()["products"].pop(index-1)
-        self.dcm.writeFile()
+        print(f"index: {index - 1}, removedItem: {self.db.getDB()['products'][index - 1]}")
+        self.db.getDB()["products"].pop(index - 1)
+        self.db.writeFile()
         self.recreate_list()
         pass
 
     def recreate_list(self):
         self.prodictlist.clear()
         self.kvdict = {}
-        # print(self.dcm.getDB())
-        for item in self.dcm.getDB()["products"]:
-            index = self.dcm.getDB()["products"].index(item)
+        # print(self.dcm)
+        for item in self.db.getDB()["products"]:
+            index = self.db.getDB()["products"].index(item)
             index += 1
             self.kvdict[index] = item
             # print(f"Adding: k:{index}, v:{item}")
